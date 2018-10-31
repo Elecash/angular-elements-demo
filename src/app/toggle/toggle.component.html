@@ -1,0 +1,12 @@
+<input #cb type="checkbox" id="switch" (click)="onClick()">
+<label for="switch" [ngStyle]="styles.label">
+    <span class="dot" [ngStyle]="styles.dot"></span>
+
+    <span class="on" [ngStyle]="styles.on">
+        <slot name="on"></slot>
+    </span>
+
+    <span class="off" [ngStyle]="styles.off">
+        <slot name="off"></slot>
+    </span>
+</label>
