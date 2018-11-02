@@ -1,11 +1,11 @@
-import { Component, Input, OnChanges, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 
 @Component({
     templateUrl: './toggle.component.html',
     styleUrls: [ './toggle.component.scss' ],
     encapsulation: ViewEncapsulation.ShadowDom
 })
-export class ToggleComponent implements OnChanges {
+export class ToggleComponent implements OnInit, OnChanges {
     styles: any = {};
 
     @ViewChild('cb') cb;
@@ -14,6 +14,10 @@ export class ToggleComponent implements OnChanges {
     @Input() height = 100;
 
     constructor() {
+    }
+
+    ngOnInit() {
+        this.updateStyles();
     }
 
     ngOnChanges(changes) {
