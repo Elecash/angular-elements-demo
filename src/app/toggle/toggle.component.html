@@ -1,4 +1,4 @@
-<input #cb type="checkbox" id="switch" (click)="onClick()">
+<input #cb type="checkbox" id="switch" (click)="onClick($event)">
 <label for="switch" [ngStyle]="styles.label">
     <span class="dot" [ngStyle]="styles.dot"></span>
 

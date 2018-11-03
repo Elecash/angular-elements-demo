@@ -1,9 +1,11 @@
-<ngx-toggle [size]="90" [width]="200" [height]="100">
+<button type="button" (click)="onClick()">Create Web Component</button>
+
+<ngx-toggle (change)="onChange($event)">
     <span slot="on" class="fas fa-dollar-sign"></span>
     <span slot="off" class="fas fa-euro-sign"></span>
 </ngx-toggle>
 
-<ngx-toggle [size]="90" [width]="200" [height]="100">
+<ngx-toggle [size]="45" [width]="100" [height]="50" (change)="onChange($event)">
     <span slot="on" class="text">ON</span>
     <span slot="off" class="text">OFF</span>
 </ngx-toggle>

@@ -1,9 +1,21 @@
-import { Component, Input, OnChanges, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    EventEmitter,
+    Input,
+    OnChanges,
+    OnInit,
+    Output,
+    ViewChild,
+    ViewEncapsulation
+} from '@angular/core';
 
 @Component({
     templateUrl: './toggle.component.html',
     styleUrls: [ './toggle.component.scss' ],
-    encapsulation: ViewEncapsulation.ShadowDom
+    encapsulation: ViewEncapsulation.ShadowDom,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ToggleComponent implements OnInit, OnChanges {
     styles: any = {};
@@ -12,8 +24,9 @@ export class ToggleComponent implements OnInit, OnChanges {
     @Input() size = 90;
     @Input() width = 200;
     @Input() height = 100;
+    @Output() change = new EventEmitter<boolean>();
 
-    constructor() {
+    constructor(private ref: ChangeDetectorRef) {
     }
 
     ngOnInit() {
@@ -49,9 +62,12 @@ export class ToggleComponent implements OnInit, OnChanges {
         if (this.cb.nativeElement.checked) {
             this.styles.dot.left = `calc(100% - ${hMargin}px)`;
         }
+
+        this.ref.detectChanges();
     }
 
-    onClick() {
+    onClick(evt) {
+        this.change.emit(evt.target.checked);
         this.updateStyles();
     }
 }
