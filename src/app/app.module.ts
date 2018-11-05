@@ -12,7 +12,7 @@ import { ToggleComponent } from './toggle/toggle.component';
     imports: [
         BrowserModule
     ],
-    // bootstrap: [ AppComponent ],
+    bootstrap: [ AppComponent ],
     entryComponents: [
         ToggleComponent
     ],
